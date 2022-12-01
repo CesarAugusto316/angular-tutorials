@@ -1,23 +1,29 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 
 
 @Component({
   selector: 'app-form',
   templateUrl: './form.component.html',
-  styleUrls: ['./form.component.scss']
+  styleUrls: ['./form.component.scss'],
 })
 export class FormComponent implements OnInit {
-  public name = new FormControl('');
-  public lastName = new FormControl('');
+  public userProfile = this.fb.group({
+    name: ['', Validators.required],
+    lastName: ['', Validators.required]
+  });
 
-  constructor() { }
+  constructor(private fb: FormBuilder) { }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {
+    this.userProfile.valueChanges.subscribe(values => {
+      console.log(values);
+      console.log('is valid:', this.userProfile.valid);
+    });
+  }
 
   sendFormData() {
-    console.log(this.name.value, this.lastName.value)
-    this.name.reset()
-    this.lastName.reset()
+    console.log(this.userProfile.value);
+    this.userProfile.reset({ name: '', lastName: '' });
   }
 }

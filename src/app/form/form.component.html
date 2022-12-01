@@ -1,6 +1,8 @@
-<p>form works! {{ name.value }}</p>
+<p>form works! name: {{ userProfile.value.name }}</p>
+<p>form works! lastName: {{ userProfile.value.lastName }}</p>
+<p>form works! status: {{ userProfile.status }}</p>
 
-<form (submit)="sendFormData()">
+<form (ngSubmit)="sendFormData()" [formGroup]="userProfile">
   <div class="flex flex-col w-80 bg-slate-100 rounded-md p-7 gap-4 shadow">
     <h3 class="text-xl font-bold uppercase text-center">Form</h3>
 
@@ -9,17 +11,23 @@
       type="text"
       name="name"
       placeholder="Name"
-      [formControl]="name"
+      formControlName="name"
     />
     <input
       class="outline-none focus:ring-2 ring-green-400 rounded-md p-2 border bg-slate-50"
       type="text"
       name="last-name"
       placeholder="Lastname"
-      [formControl]="lastName"
+      formControlName="lastName"
     />
     <button
-      class="bg-green-400 rounded-md py-3 uppercase font-bold text-slate-50 text-sm"
+      [disabled]="!userProfile.valid"
+      [ngClass]="
+        !userProfile.valid
+          ? 'bg-slate-300/80 text-slate-500/80 cursor-not-allowed'
+          : 'bg-green-400 text-slate-50'
+      "
+      class="rounded-md py-3 uppercase font-bold text-sm"
       type="submit"
     >
       submit
