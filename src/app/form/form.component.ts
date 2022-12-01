@@ -8,10 +8,11 @@ import { FormBuilder, Validators } from '@angular/forms';
   styleUrls: ['./form.component.scss'],
 })
 export class FormComponent implements OnInit {
-  public userProfile = this.fb.group({
-    name: ['', Validators.required],
-    lastName: ['', Validators.required]
-  });
+  public userProfile =
+    this.fb.group({
+      name: ['', [Validators.required, Validators.minLength(5)]],
+      lastName: ['', [Validators.required, Validators.minLength(5)]]
+    });
 
   constructor(private fb: FormBuilder) { }
 
