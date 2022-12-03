@@ -1,5 +1,17 @@
-<div
-  class="bg-slate-200 text-slate-600 min-h-screen flex justify-center items-center"
->
-  <app-form></app-form>
+<nav class="fixed top-0 left-0 bg-slate-100 w-full h-14 flex items-center 
+  justify-center text-slate-600 shadow-sm font-bold text-lg">
+  <ul class="flex gap-4">
+    <li routerLink="/home" class="text-blue-500 cursor-pointer">
+      Home
+    </li>
+    <li routerLink="/mylist" class="text-blue-500 cursor-pointer">
+      Features
+    </li>
+  </ul>
+</nav>
+
+<div class="bg-slate-200 text-slate-600 min-h-screen flex justify-center items-center">
+  <div>
+    <router-outlet></router-outlet>
+  </div>
 </div>
