@@ -1,17 +1,12 @@
-<nav class="fixed top-0 left-0 bg-slate-100 w-full h-14 flex items-center 
-  justify-center text-slate-600 shadow-sm font-bold text-lg">
-  <ul class="flex gap-4">
-    <li routerLink="/home" class="text-blue-500 cursor-pointer">
-      Home
-    </li>
-    <li routerLink="/mylist" class="text-blue-500 cursor-pointer">
-      Features
-    </li>
-  </ul>
-</nav>
-
-<div class="bg-slate-200 text-slate-600 min-h-screen flex justify-center items-center">
-  <div>
+<section class="min-h-screen flex flex-col">
+  <mat-toolbar color="primary" class="mat-elevation-z3">
+    <button mat-icon-button>
+      <mat-icon>menu</mat-icon>
+    </button>
+    <span>{{ userName }}'s To Do List</span>
+    <mat-icon matBadge="{{ remainingTodos }}" matBadgeColor="accent">checklist</mat-icon>
+  </mat-toolbar>
+  <div class="bg-slate-200 text-slate-600 flex-auto flex justify-center items-center">
     <router-outlet></router-outlet>
   </div>
-</div>
+</section>

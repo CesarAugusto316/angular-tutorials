@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { TodoItem } from './models/TodoItem';
+import { TodoList } from './models/TodoList';
 
 
 @Component({
@@ -7,5 +9,22 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'my-app';
+  private todoList = new TodoList('cesar', [
+    new TodoItem('feed the cat'),
+    new TodoItem('wash the dishes'),
+    new TodoItem('learn angular'),
+  ]);
+
+  get userName(): string {
+    return this.todoList.user;
+  }
+
+  get remainingTodos(): number {
+    return (
+      this.todoList
+        .items
+        .filter(item => !item.complete)
+        .length
+    );
+  }
 }

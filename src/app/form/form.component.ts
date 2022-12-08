@@ -17,10 +17,12 @@ export class FormComponent implements OnInit {
   constructor(private fb: FormBuilder) { }
 
   ngOnInit(): void {
-    this.userProfile.valueChanges.subscribe(values => {
-      console.log(values);
-      console.log('is valid:', this.userProfile.valid);
-    });
+    this.userProfile
+      .valueChanges
+      .subscribe(values => {
+        console.log(values);
+        console.log('is valid:', this.userProfile.valid);
+      });
   }
 
   sendFormData() {
